@@ -1,0 +1,54 @@
+# Private planning — do not publish
+/doc/
+
+# Assignment source (keep local)
+*.pdf
+attachments/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+backend/.env
+
+# Dependencies & build (Tailwind CLI → public/css/app.css)
+backend/vendor/
+backend/node_modules/
+backend/public/hot
+backend/public/storage
+backend/storage/*.key
+backend/storage/pail
+backend/storage/framework/cache/*
+backend/storage/framework/sessions/*
+backend/storage/framework/views/*
+backend/storage/logs/*
+!backend/storage/framework/cache/.gitignore
+!backend/storage/framework/sessions/.gitignore
+!backend/storage/framework/views/.gitignore
+!backend/storage/logs/.gitignore
+
+# PHP / Node misc
+.phpunit.result.cache
+backend/.phpunit.result.cache
+npm-debug.log*
+yarn-error.log*
+*.log
+
+# DB dumps / local sqlite
+*.sql
+*.sqlite
+*.sqlite3
+*.dump
+backend/database/*.sqlite
+backend/database/*.sqlite3
+
+# .cursor
+.cursor/

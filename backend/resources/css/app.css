@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@source "../views/**/*.blade.php";
+
+@theme {
+    /* System stacks — no webfont swap → lower CLS / no render-blocking Google Fonts */
+    --font-sans: "Segoe UI", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
+    --font-display: "Avenir Next", "Segoe UI Semibold", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+    --color-ink: #1c1917;
+    --color-mute: #57534e;
+    /* Bump muted stone utilities for WCAG contrast on cream/white */
+    --color-stone-400: #78716c;
+    --color-stone-500: #57534e;
+}
+
+@layer components {
+    .ui-heading {
+        color: #1c1917;
+        font-family: var(--font-display);
+        font-weight: 600;
+    }
+
+    .ui-sub {
+        color: #57534e;
+    }
+
+    .ui-label {
+        color: #57534e;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+    }
+}
+
+/* Mobile nav drawer */
+.nav-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    background: rgb(28 25 23 / 0.4);
+}
+
+.mobile-drawer {
+    position: fixed;
+    inset-block: 0;
+    left: 0;
+    z-index: 50;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+}
+
+body.nav-open {
+    overflow: hidden;
+}
+
+body.nav-open .mobile-drawer {
+    transform: translateX(0);
+}
+
+@media (min-width: 1024px) {
+    .nav-backdrop {
+        display: none !important;
+    }
+
+    .mobile-drawer {
+        position: static;
+        z-index: auto;
+        transform: none !important;
+    }
+
+    body.nav-open {
+        overflow: hidden;
+    }
+}
+
+@media print {
+    aside,
+    header,
+    .no-print,
+    .nav-backdrop,
+    .nav-open,
+    .nav-close {
+        display: none !important;
+    }
+
+    body {
+        height: auto !important;
+        overflow: visible !important;
+        background: #fff !important;
+    }
+
+    .flex.h-screen {
+        display: block !important;
+        height: auto !important;
+    }
+
+    main {
+        overflow: visible !important;
+        padding: 0 !important;
+    }
+
+    .print-sheet {
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+    }
+}
